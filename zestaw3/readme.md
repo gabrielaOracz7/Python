@@ -92,6 +92,7 @@ Prostokąt składający się 2 × 4 pól ma postać:
 Dla dwóch sekwencji liczb lub znaków znaleźć:
 
 (a) listę elementów występujących jednocześnie w obu sekwencjach (bez powtórzeń),
+
 (b) listę wszystkich elementów z obu sekwencji (bez powtórzeń). 
 
 ---
