@@ -77,20 +77,19 @@ def roman2int(roman):
     
             if prev_prev_symbol and curr_symbol_value>dictionary.get(prev_prev_symbol):  #e.g. VIX
                 print("Invalid input: "+roman+" - wrong combination: "+ prev_prev_symbol+prev_symbol+symbol)
-                return
-                
+                return                
             last_substract_symbol=prev_symbol
             total_value=total_value-2*dictionary.get(prev_symbol)+curr_symbol_value
         else:  #when prev_symbol  > symbol
             if last_substract_symbol==symbol: #e.g. XIXI
                 print('Invalid input: '+roman)
                 return
-            
+                
             total_value+=curr_symbol_value
             last_substract_symbol=None
         prev_prev_symbol=prev_symbol
         prev_symbol =symbol
-
+        
     return total_value
 
 
