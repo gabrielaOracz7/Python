@@ -2,7 +2,7 @@
 
 def fibonacci(n):
     if  not isinstance(n, int) or n<0:
-        raise ValueError('Argument must be non-negative integer.')
+        raise ValueError('Argument must be a non-negative integer.')
     
     if n==0 or n==1:
         return n
