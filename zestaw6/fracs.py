@@ -73,6 +73,11 @@ class Frac:
         return  Frac(self.x * other.y, self.y * other.x)
 
     def __div__(self, other):
+        """ Python2 style:
+        integer division if both numbers are whole (denominator = 1); otherwise - true division
+        """
+        if self.y == 1 and other.y == 1:
+            return self.__floordiv__(other)
         return self.__truediv__(other)
 
     def __floordiv__(self, other):
@@ -87,7 +92,6 @@ class Frac:
         q = self // other
         return self - Frac(q) * other
 
-    # operatory jednoargumentowe
     def __pos__(self): 
         return self
 
