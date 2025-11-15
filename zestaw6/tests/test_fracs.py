@@ -134,6 +134,13 @@ class TestFracs(unittest.TestCase):
             _ = self.f3 / Frac(0, -5)
 
 
+    def test_div(self): 
+        self.assertEqual(Frac(5, 1).__div__(Frac(2, 1)), 2)
+        self.assertEqual(self.f3.__div__(self.f4), Frac(-3, 4))
+        self.assertEqual(Frac(2, 1).__div__(Frac(3, 1)), 0)
+        self.assertEqual(Frac(17, 2).__div__(Frac(2, 1)), Frac(17, 4))
+
+
     def test_floordiv(self): 
         self.assertEqual(Frac(7, 3).__floordiv__(Frac(2, -3)), -4)
         self.assertEqual(self.f1 // self.f3, 1)
