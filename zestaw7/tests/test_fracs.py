@@ -29,7 +29,13 @@ class TestFracs(unittest.TestCase):
         with self.assertRaises(ValueError):
             str(Frac(-12, 0))
 
+        with self.assertRaises(TypeError):
+            str(Frac(0.25, 0.3))
 
+        with self.assertRaises(TypeError):
+            str(Frac(5, 0.6))
+
+    
     def test_repr(self):
         self.assertEqual(repr(self.frac1), "Frac(1, 2)")
         self.assertEqual(repr(self.frac2), "Frac(3, 8)")
