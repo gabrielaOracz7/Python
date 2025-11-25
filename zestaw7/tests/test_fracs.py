@@ -54,6 +54,9 @@ class TestFracs(unittest.TestCase):
         self.assertEqual(Frac(3, -6).__cmp__(-0.5), 0)
         self.assertEqual(Frac(-3, -6).__cmp__(self.int2), 1)
 
+        with self.assertRaises(ValueError):
+            Frac(10).__cmp__([1, 2, 3])
+
 
     def test_eq(self):
         self.assertTrue(self.frac1.__eq__(Frac(-12, -24)))
@@ -69,6 +72,12 @@ class TestFracs(unittest.TestCase):
         self.assertFalse(Frac(-13, 5) == 2.6)
         self.assertFalse(self.int1 == Frac(15))
         self.assertFalse(self.float1 == Frac(10,3))
+
+        with self.assertRaises(ValueError):
+            'str' == Frac(10)
+
+        with self.assertRaises(ValueError):
+            Frac(10) == [1, 2, 3]
 
 
     def test_lt(self):
@@ -88,12 +97,18 @@ class TestFracs(unittest.TestCase):
         self.assertFalse(self.frac1 < -10)
         self.assertFalse(self.frac2 < -0.75)
 
+        with self.assertRaises(ValueError):
+            'str' < Frac(10)
+
+        with self.assertRaises(ValueError):
+            Frac(10) < [1, 2, 3]
+
 
     def test_le(self):
         self.assertTrue(self.frac2.__le__(self.frac1))
         self.assertTrue(self.frac3 <= self.frac2)
         self.assertTrue(self.frac3 <= Frac(-30, 62))
-        self.assertTrue(self.frac2.__le__(self.frac2))
+        self.assertTrue(self.frac2 <= (self.frac2))
         self.assertTrue(self.int1 <= Frac(24, 2))
         self.assertTrue(self.float2 <= self.frac1)
         self.assertTrue(self.frac3 <= 8)
@@ -106,6 +121,12 @@ class TestFracs(unittest.TestCase):
         self.assertFalse(0.75 <= Frac(-4, 3))
         self.assertFalse(Frac(12, 5) <= self.int2)
         self.assertFalse(self.frac1 <= -0.7555)
+
+        with self.assertRaises(ValueError):
+            'str' <= Frac(10)
+
+        with self.assertRaises(ValueError):
+            Frac(10) <= [1, 2, 3]
 
 
     def test_gt(self):
@@ -120,11 +141,17 @@ class TestFracs(unittest.TestCase):
         self.assertFalse(self.frac2.__gt__(self.frac1))
         self.assertFalse(self.frac3 > self.frac2)
         self.assertFalse(self.frac3 > Frac(30, 62))
-        self.assertFalse(self.frac3.__gt__(self.frac3))
+        self.assertFalse(self.frac3 > (self.frac3))
         self.assertFalse(-10 > self.frac1)
         self.assertFalse(-0.75 > self.zero)
         self.assertFalse(Frac(12, 6) > 2)
         self.assertFalse(self.frac3 > self.float1)
+
+        with self.assertRaises(ValueError):
+            'str' > Frac(10)
+
+        with self.assertRaises(ValueError):
+            Frac(10) > [1, 2, 3]
 
 
     def test_ge(self):
@@ -144,6 +171,12 @@ class TestFracs(unittest.TestCase):
         self.assertFalse(Frac(12, 3) >= 123)
         self.assertFalse(Frac(-24, 7) >= 12.345)
 
+        with self.assertRaises(ValueError):
+            'str' >= Frac(10)
+
+        with self.assertRaises(ValueError):
+            Frac(10) >= [1, 2, 3]
+
 
     def test_add(self):
         self.assertEqual(self.frac1.__add__(self.frac3), self.zero)
@@ -160,6 +193,12 @@ class TestFracs(unittest.TestCase):
         self.assertNotEqual(self.float1 + self.frac3, Frac(11))
         self.assertNotEqual(Frac(-5, 3) + 5, Frac(-10, 3))
         self.assertNotEqual(self.frac1 + 0.85, Frac(-12, 5))
+
+        with self.assertRaises(ValueError):
+            _ = 'str' + Frac(10)
+
+        with self.assertRaises(ValueError):
+            _ = Frac(10) + [1, 2, 3]
 
 
     def test_sub(self):
@@ -178,6 +217,12 @@ class TestFracs(unittest.TestCase):
         self.assertNotEqual(Frac(13, 5) - 2, Frac(-3, 5))
         self.assertNotEqual(self.zero - self.float1, Frac(21, 2))
 
+        with self.assertRaises(ValueError):
+            _ = 'str' - Frac(10)
+
+        with self.assertRaises(ValueError):
+            _ = Frac(10) - [1, 2, 3]
+
 
     def test_mul(self):
         self.assertEqual(self.frac3.__mul__(self.frac1), Frac(-1, 4))
@@ -195,6 +240,12 @@ class TestFracs(unittest.TestCase):
         self.assertNotEqual(self.float1 * Frac(1, 2), self.frac2)
         self.assertNotEqual(Frac(15, 2) * self.int2, Frac(75))
         self.assertNotEqual(self.frac3 * 0.45, Frac(-9, -40))
+
+        with self.assertRaises(ValueError):
+            _ = 'str' * Frac(10)
+
+        with self.assertRaises(ValueError):
+            _ = Frac(10) * [1, 2, 3]
 
 
     def test_truediv(self):
@@ -220,6 +271,12 @@ class TestFracs(unittest.TestCase):
         with self.assertRaises(ZeroDivisionError):
             _ = self.frac3 / Frac(0, 14)
 
+        with self.assertRaises(ValueError):
+            _ = 'str' / Frac(10)
+
+        with self.assertRaises(ValueError):
+            _ = Frac(10) / [1, 2, 3]
+
 
     def test_floordiv(self): 
         self.assertEqual(Frac(7, 3).__floordiv__(Frac(2, -3)), Frac(-4))
@@ -238,6 +295,12 @@ class TestFracs(unittest.TestCase):
         with self.assertRaises(ZeroDivisionError):
             _ = Frac(1, 2) // Frac(0, -13)
 
+        with self.assertRaises(ValueError):
+            _ = 'str' // Frac(10)
+
+        with self.assertRaises(ValueError):
+            _ = Frac(10) // [1, 2, 3]
+
 
     def test_mod(self):
         self.assertEqual(Frac(7, 3) % Frac(1, 2), Frac(1, 3))
@@ -249,6 +312,12 @@ class TestFracs(unittest.TestCase):
         self.assertEqual(self.float1 % Frac(3, 9), Frac(1, 6) )
         self.assertEqual(Frac(83, 3) % 5, Frac(8, 3))
         self.assertEqual(Frac(-1, 5) % 0.125, Frac(1, 20))
+
+        with self.assertRaises(ValueError):
+            _ = {'a' : 1} % Frac(10)
+
+        with self.assertRaises(ValueError):
+            _ = Frac(10) % [1, 2, 3]
 
 
     def test_pos(self):
