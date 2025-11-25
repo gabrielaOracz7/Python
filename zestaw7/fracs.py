@@ -9,7 +9,7 @@ class Frac:
             raise TypeError('Denominator cannot be float')
         if isinstance(x, float) and y != 1:
             raise TypeError('cannot use float when denominator != 1') 
-        if isinstance(x, float):  # Frac(0.25) allowed but Frac(0.2, 0.3) not
+        if isinstance(x, float):  # Frac(0.25) allowed but Frac(0.2, 0.3) or Frac(5, 0.25) or Frac(0.5, 5) not
             x, y = x.as_integer_ratio()
         g = gcd(x, y)
         x //= g
@@ -29,7 +29,7 @@ class Frac:
         elif isinstance(val, float):
             x, y = val.as_integer_ratio()
             return Frac(x, y)
-        return NotImplemented
+        raise ValueError('Unsupported operand type')
 
 
     def __str__(self):
@@ -42,8 +42,6 @@ class Frac:
 
     def __cmp__(self, other):
         other = Frac._helper(other)
-        if other is NotImplemented:
-            return NotImplemented
         a = self.x * other.y
         b = self.y * other.x
         return (a > b) - (a < b)
@@ -51,8 +49,6 @@ class Frac:
 
     def __eq__(self, other):
         other = Frac._helper(other)
-        if other is NotImplemented:
-            return NotImplemented
         return self.x == other.x and self.y == other.y
 
 
@@ -62,8 +58,6 @@ class Frac:
 
     def __lt__(self, other):
         other = Frac._helper(other)
-        if other is NotImplemented:
-            return NotImplemented
         return self.x * other.y < self.y * other.x
    
 
@@ -81,8 +75,6 @@ class Frac:
 
     def __add__(self, other):
         other = Frac._helper(other)
-        if other is NotImplemented:
-            return NotImplemented
         x = self.x * other.y + self.y * other.x
         y = self.y * other.y
         return Frac(x, y)
@@ -93,22 +85,16 @@ class Frac:
 
     def __sub__(self, other):
         other = Frac._helper(other)
-        if other is NotImplemented:
-            return NotImplemented
         return self.__add__(-other)
 
 
     def __rsub__(self, other):
         other = self._helper(other)
-        if other is NotImplemented:
-            return NotImplemented
         return other - self
 
 
     def __mul__(self, other):
         other = Frac._helper(other)
-        if other is NotImplemented:
-            return NotImplemented
         return Frac(self.x * other.x, self.y * other.y)
 
 
@@ -117,8 +103,6 @@ class Frac:
 
     def __truediv__(self, other):
         other = Frac._helper(other)
-        if other is NotImplemented:
-            return NotImplemented
         if other.x == 0:
             raise ZeroDivisionError('Cannot divide by 0')
         return  Frac(self.x * other.y, self.y * other.x)
@@ -126,8 +110,6 @@ class Frac:
 
     def __rtruediv__(self, other):
         other = Frac._helper(other)
-        if other is NotImplemented:
-            return NotImplemented
         return other / self
 
 
@@ -137,31 +119,23 @@ class Frac:
 
     def __floordiv__(self, other):
         other = Frac._helper(other)
-        if other is NotImplemented:
-            return NotImplemented
         result = self / other
         return Frac(result.x // result.y)
 
 
     def __rfloordiv__(self, other):
         other = Frac._helper(other)
-        if other is NotImplemented:
-            return NotImplemented
         return other // self
 
 
     def __mod__(self, other):
         other = Frac._helper(other)
-        if other is NotImplemented:
-            return NotImplemented
         q = self // other
         return self - q * other
 
 
     def __rmod__(self, other):
         other = Frac._helper(other)
-        if other is NotImplemented:
-            return NotImplemented
         return other % self
 
 
