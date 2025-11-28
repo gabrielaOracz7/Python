@@ -226,9 +226,7 @@ class TestTriangles:
     def test_boundingbox(self, triangle_1, triangle_2, triangle_3):
         assert triangle_1.boundingbox == (triangle_1.topleft, triangle_1.bottomleft,
                                         triangle_1.bottomright, triangle_1.topright)
-     
         assert triangle_2.boundingbox == (triangle_2.topleft, triangle_2.bottomleft,
                                         triangle_2.bottomright, triangle_2.topright)
-
         assert triangle_3.boundingbox == (triangle_3.topleft, triangle_3.bottomleft,
-                                               triangle_3.bottomright, triangle_3.topright)
+                                        triangle_3.bottomright, triangle_3.topright)
