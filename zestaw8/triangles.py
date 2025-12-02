@@ -13,13 +13,14 @@ class Triangle:
         self.pt3 = Point(x3, y3)
 
 
-    def from_points(points):
+    @classmethod
+    def from_points(cls, points):
         if not isinstance(points, (tuple, list)):
             raise TypeError('Input must be a tuple or a list')
         if len(points) != 3:
             raise ValueError('Exactly three points are required to build a triangle')
         p1, p2, p3 = points
-        return Triangle(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y)
+        return cls(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y)
 
 
     def __str__(self):

@@ -19,7 +19,7 @@ class Point:
         if isinstance(other, Point):
             return self.x == other.x and self.y == other.y
         else:
-            return NotImplemented
+            raise TypeError('Not a point')
 
 
     def __ne__(self, other):        
@@ -28,19 +28,19 @@ class Point:
 
     def __add__(self, other):
         if not isinstance(other, Point):
-            return NotImplemented
+            raise TypeError('Not a point')
         return Point(self.x + other.x, self.y + other.y)
 
 
     def __sub__(self, other):
         if not isinstance(other, Point):
-            return NotImplemented
+            raise TypeError('Not a point')
         return Point(self.x - other.x, self.y - other.y)
 
 
     def __mul__(self, other):
         if not isinstance(other, Point):
-            return NotImplemented
+            raise TypeError('Not a point')
         return self.x * other.x + self.y * other.y
 
 
