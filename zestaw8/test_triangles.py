@@ -113,7 +113,7 @@ class TestTriangles:
         assert triangle_2 == Triangle(-1, -1, 2, 3, 4, -2)
 
         triangle_4.move(-1.5, 2.75)
-        assert triangle_3 == Triangle(-1.5, -1.0, 2.2, 3.5, 4.0, -2.5)
+        assert triangle_4 == Triangle(-1.5, 5.75, -1.5, 2.75, 2.5, 2.75)
 
         triangle_3.move(10, -7.5)
         assert triangle_3 == Triangle(8.5, -8.5, 12.2, -4.0, 14.0, -10.0)
