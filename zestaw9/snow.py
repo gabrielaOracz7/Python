@@ -104,7 +104,7 @@ while True:
             game_over_screen(score)
         
     screen.blit(bg_image, (0, 0))
-    for f in falling_flakes[:]:
+    for f in falling_flakes:
         screen.blit(flake_image, f.topleft)
 
     for lf in landed_flakes:
