@@ -21,7 +21,12 @@ class StartFrames:
     #----------MAIN CONTENT SUBFRAME------------
         main_content_subframe = tk.Frame(self.start_frame, pady = 5, bg = self.COLORS['bg_main'])
 
-        title_label = tk.Label(main_content_subframe, text = 'TIC TAC TOE', font = ('Courier New', 35, 'bold'), bg = self.COLORS['bg_main'], fg = self.COLORS['off-white'])
+        title_label = tk.Label(main_content_subframe, 
+                               text = 'TIC TAC TOE', 
+                               font = ('Courier New', 35, 'bold'), 
+                               bg = self.COLORS['bg_main'], 
+                               fg = self.COLORS['off-white']
+                               )
         title_label.pack(pady = 40)
 
         gm_button_style = {
@@ -39,7 +44,7 @@ class StartFrames:
                                          text = '▶ PLAY WITH COMPUTER', 
                                          bg = self.COLORS['blue'], 
                                          command = lambda: self.set_game_mode('computer'),
-                                         activebackground=self.COLORS['dark_blue'],
+                                         activebackground = self.COLORS['dark_blue'],
                                          **gm_button_style
                                          )           
         single_player_button.pack(pady = 15, padx = 30,fill = 'x')
@@ -48,7 +53,7 @@ class StartFrames:
                                        text = '▶ PLAY WITH FRIEND', 
                                        bg = self.COLORS['red'],  
                                        command = lambda: self.set_game_mode('friend'),
-                                       activebackground=self.COLORS['dark_red'],
+                                       activebackground = self.COLORS['dark_red'],
                                        **gm_button_style
                                         )
         with_friend_button.pack(pady = 15, padx = 30, fill = 'x')
@@ -75,7 +80,12 @@ class StartFrames:
     #------------MAIN CONTENT SUBFRAME----------------
         main_content_subframe = tk.Frame(self.rules_frame, pady = 5, bg = self.COLORS['charcoal'])
 
-        rules_title_label = tk.Label(main_content_subframe, text = 'HOW TO PLAY?', font = ('Courier New', 28, 'bold'), bg = self.COLORS['charcoal'], fg = self.COLORS['off-white'])
+        rules_title_label = tk.Label(main_content_subframe, 
+                                     text = 'HOW TO PLAY?', 
+                                     font = ('Courier New', 28, 'bold'), 
+                                     bg = self.COLORS['charcoal'], 
+                                     fg = self.COLORS['off-white']
+                                     )
         rules_title_label.pack(pady = (5, 20))
 
         rules_explanation_label = tk.Label(main_content_subframe, 
@@ -85,9 +95,9 @@ class StartFrames:
                                                 "If all spaces are filled and no one wins, the game ends in a tie.\n\n"
                                                 "You can play with a friend or challenge the computer, which definitely won't let you win easily.", 
                                             bg = self.COLORS['charcoal'], 
-                                            justify='center', 
+                                            justify = 'center', 
                                             fg = '#B6B6B8',
-                                            wraplength=350, 
+                                            wraplength = 350, 
                                             font = ('Courier New', 12, 'bold')
                                             )
         rules_explanation_label.pack(pady = 10)

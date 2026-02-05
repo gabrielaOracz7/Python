@@ -5,7 +5,6 @@ from tkinter import messagebox
 class SettingsFrames:
     def __init__(self, master, app, colors):
         self.master = master
-  
         self.COLORS = colors
         self.app = app
         self.create_difficulty_level_frame()
@@ -40,15 +39,16 @@ class SettingsFrames:
                             bg = colors[lvl], 
                             font = ('Sans-serif', 15, 'bold'), 
                             command = lambda l = lvl: self.select_difficulty(l),
-                            activebackground=self.COLORS['gray'],  
-                            activeforeground=self.COLORS['white'],
-                            relief='flat',
-                            bd=0,
-                            padx=20,
-                            pady=12,
-                            cursor='hand2'
+                            activebackground = self.COLORS['gray'],  
+                            activeforeground = self.COLORS['white'],
+                            relief = 'flat',
+                            bd = 0,
+                            padx = 20,
+                            pady = 12,
+                            cursor = 'hand2'
                             )        
             btn.pack(pady = 10, padx = 50, fill = 'x')
+
 
 
     def select_difficulty(self, lvl):
@@ -56,9 +56,6 @@ class SettingsFrames:
         self.app.show_frame(self.game_settings_frame)
 
 
-
-
- 
 
     #----------------------------------------------------------------------
     #-----------------------GAME SETTINGS FRAME----------------------------
@@ -110,19 +107,28 @@ class SettingsFrames:
             'cursor': 'hand2',
             'command': self.show_who_starts_sf
         }
-        x_button = tk.Radiobutton(self.symbol_selection_subframe, text=self.app.cross_symbol, variable=self.app.player1_symbol, value= self.app.cross_symbol, **button_style)
-        o_button = tk.Radiobutton(self.symbol_selection_subframe, text=self.app.circle_symbol, variable=self.app.player1_symbol, value= self.app.circle_symbol,  **button_style)
+        x_button = tk.Radiobutton(self.symbol_selection_subframe, 
+                                  text = self.app.cross_symbol, 
+                                  variable = self.app.player1_symbol, 
+                                  value = self.app.cross_symbol, 
+                                  **button_style)
+        o_button = tk.Radiobutton(self.symbol_selection_subframe, 
+                                  text = self.app.circle_symbol, 
+                                  variable = self.app.player1_symbol, 
+                                  value = self.app.circle_symbol,  
+                                  **button_style)
 
-        self.symbol_selection_subframe.columnconfigure(0, weight=1)
-        self.symbol_selection_subframe.columnconfigure(1, weight=1)
+        self.symbol_selection_subframe.columnconfigure(0, weight = 1)
+        self.symbol_selection_subframe.columnconfigure(1, weight = 1)
 
-        x_button.grid(row=1, column=0, padx=10, pady=10, sticky='nsew')
-        o_button.grid(row=1, column=1, padx=10, pady=10, sticky='nsew')
+        x_button.grid(row = 1, column = 0, padx = 10, pady = 10, sticky = 'nsew')
+        o_button.grid(row = 1, column = 1, padx = 10, pady = 10, sticky = 'nsew')
 
-        self.symbol_selection_subframe.pack(pady=20, fill='x')
+        self.symbol_selection_subframe.pack(pady = 20, fill = 'x')
 
         if self.app.logic.game_mode == 'friend':
-            self.symbol_selection_subframe.config(pady=10)
+            self.symbol_selection_subframe.config(pady = 10)
+
 
     #--------------WHO STARTS SUBFRAME------------------
         self.who_starts_subframe = tk.Frame(self.game_settings_frame, bg = self.COLORS['bg_main'])
@@ -146,21 +152,21 @@ class SettingsFrames:
         }
         ws1_button = tk.Radiobutton(
             self.who_starts_subframe,
-            variable=self.app.starting_player,
-            value='player1',
+            variable = self.app.starting_player,
+            value = 'player1',
             **ws_button_style
         )
         ws2_button = tk.Radiobutton(
             self.who_starts_subframe,
-            variable=self.app.starting_player,
-            value='player2',
+            variable = self.app.starting_player,
+            value = 'player2',
             **ws_button_style
         )
         ws3_button = tk.Radiobutton(
             self.who_starts_subframe,
-            text='?',
-            variable=self.app.starting_player,
-            value='random',
+            text = '?',
+            variable = self.app.starting_player,
+            value = 'random',
             **ws_button_style
         )
 
@@ -172,12 +178,12 @@ class SettingsFrames:
             ws1_button.config(text = 'YOU')
             ws2_button.config(text = 'COMPUTER')
 
-        self.who_starts_subframe.columnconfigure(0, weight=1)
-        self.who_starts_subframe.columnconfigure(1, weight=1)
-        self.who_starts_subframe.columnconfigure(2, weight=1)
+        self.who_starts_subframe.columnconfigure(0, weight = 1)
+        self.who_starts_subframe.columnconfigure(1, weight = 1)
+        self.who_starts_subframe.columnconfigure(2, weight = 1)
 
-        ws1_button.grid(row=1, column=0, padx=5, pady=5, sticky = 'nsew')
-        ws2_button.grid(row=1, column=1, padx=5, pady=5, sticky = 'nsew')
+        ws1_button.grid(row = 1, column = 0, padx = 5, pady = 5, sticky = 'nsew')
+        ws2_button.grid(row = 1, column = 1, padx = 5, pady = 5, sticky = 'nsew')
         ws3_button.grid(row = 1, column = 2, padx = 5, pady = 5, sticky = 'nsew')
 
         self.start_game_button = tk.Button(
@@ -187,19 +193,19 @@ class SettingsFrames:
             bg = self.COLORS['green'],
             activebackground= self.COLORS['dark_green'],  
             relief = 'flat',
-            bd=0,
+            bd = 0,
             fg = self.COLORS['silver'],
-            padx=30,
-            pady=12,
-            cursor='hand2',
-            activeforeground= self.COLORS['dim_gray'],
+            padx = 30,
+            pady = 12,
+            cursor = 'hand2',
+            activeforeground = self.COLORS['dim_gray'],
             command = self.app.gameplay.start_game
         )
 
 
     #--------------NICKNAMES SUBFRAME------------------
     def create_nicknames_subframe(self): 
-        nicknames_subframe = tk.Frame(self.game_settings_frame, bg = self.COLORS['bg_main'], pady=5)
+        nicknames_subframe = tk.Frame(self.game_settings_frame, bg = self.COLORS['bg_main'], pady = 5)
 
         nicknames_title_label = tk.Label(
             nicknames_subframe, 
@@ -209,8 +215,8 @@ class SettingsFrames:
             fg = self.COLORS['silver']
         )
         nicknames_title_label.grid(row = 0, column = 0, columnspan = 2, pady = (5, 10))
-        nicknames_subframe.columnconfigure(0, weight=1)
-        nicknames_subframe.columnconfigure(1, weight=1)
+        nicknames_subframe.columnconfigure(0, weight = 1)
+        nicknames_subframe.columnconfigure(1, weight = 1)
 
         self.app.player1_name.set('Player1')
         self.app.player2_name.set('Player2')
@@ -222,8 +228,8 @@ class SettingsFrames:
             'padx' : 10,
             'pady': 5
         }
-        tk.Label(nicknames_subframe, text="Player1:", **label_kwargs).grid(row = 1, column = 0, padx=5, sticky = 'nsew')
-        tk.Label(nicknames_subframe, text="Player2:", **label_kwargs).grid(row=1, column=1, padx=5, sticky = 'nsew')
+        tk.Label(nicknames_subframe, text = "Player1:", **label_kwargs).grid(row = 1, column = 0, padx = 5, sticky = 'nsew')
+        tk.Label(nicknames_subframe, text = "Player2:", **label_kwargs).grid(row = 1, column = 1, padx = 5, sticky = 'nsew')
 
         entry_kwargs = {
             'font':('Segoe UI', 12),
@@ -231,15 +237,16 @@ class SettingsFrames:
             'fg':self.COLORS['white'],
             'insertbackground':self.COLORS['white'],   
             'relief':'flat',
-            'bd':0,
+            'bd': 0,
             'highlightbackground': self.COLORS['white'],  
             'highlightcolor': self.COLORS['white'],      
-            'highlightthickness' :1
+            'highlightthickness': 1
         }
-        tk.Entry(nicknames_subframe, textvariable=self.app.player1_name, **entry_kwargs).grid(row = 2, column=0, padx=5, sticky = 'nsew')
-        tk.Entry(nicknames_subframe, textvariable=self.app.player2_name, **entry_kwargs).grid(row=2, column=1, padx=5, sticky = 'nsew')
+        tk.Entry(nicknames_subframe, textvariable = self.app.player1_name, **entry_kwargs).grid(row = 2, column = 0, padx = 5, sticky = 'nsew')
+        tk.Entry(nicknames_subframe, textvariable = self.app.player2_name, **entry_kwargs).grid(row = 2, column = 1, padx = 5, sticky = 'nsew')
         
         nicknames_subframe.pack(fill = 'x')
+
 
 
     def validate_nicknames(self):
@@ -257,6 +264,8 @@ class SettingsFrames:
         if nick2 == "":
             self.app.player2_name.set('Player2')
         return True
+
+
 
 
     def show_who_starts_sf(self):

@@ -29,8 +29,7 @@ class TicTacToeApp:
         self.start = StartFrames(self.root, self, self.COLORS)
   
 
-
-    COLORS = {
+    COLORS = { 
             'red': '#931F1D',
             'btn_topbar_bg': '#2b2b2b',
             'graphite': '#3a3a3a',
@@ -69,7 +68,7 @@ class TicTacToeApp:
             self.current_frame = self.frame_history.pop()
             if self.current_frame == self.settings.difficulty_level_frame:
                 self.settings.clean_choices()
-                self.settings.symbol_selection_subframe.pack(pady=20, fill='x')
+                self.settings.symbol_selection_subframe.pack(pady = 20, fill = 'x')
                 self.settings.who_starts_subframe.pack_forget()
                 self.settings.start_game_button.pack_forget()
             self.current_frame.pack(expand = True, fill = 'both')
