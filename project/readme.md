@@ -156,7 +156,7 @@ Tutaj z kolei rozpatrywana jest sytuacja, w której ruch wykonuje gracz minimali
 ### 4.2 Wizualizacja działania algorytmu
 #### 4.2.1 Drzewo gry
 Aby lepiej zrozumieć ideę i mechanizm algorytmu  *Minimax*  przeanalizujmy przykładowe drzewo decyzyjne dla gry w **kółko i krzyżyk**, przedstawione na poniższym rysunku:
-![tictactoe](readme_images/tictactoe_basic.png)
+<img src="readme_images/tictactoe_basic.png"  style="width:100%; height:auto;">
 
 Każdy węzeł drzewa reprezentuje konkretny stan planszy, natomiast liczby umieszczone po lewej stronie oznaczają kolejne numery węzłów (stanów planszy) analizowanych przez algorytm.
 
@@ -176,7 +176,8 @@ Z węzła `1` wychodzą trzy gałęzie prowadzące do węzłów `2`, `3` i `4`, 
 W przykładzie przedstawionym powyżej widać dwa scenariusze prowadzące do zwycięstwa gracza maksymalizującego: jeden osiągany w jednym ruchu (węzeł `2`), a drugi w trzech ruchach (węzeł `10`). W klasycznym algorytmie *Minimax* oba traktowane są jako **równie dobre**. Z reguły jednak przyjmuje się, że **szybsza wygrana jest korzystniejsza** i  analogicznie, **wolniejsza przegrana jest lepsza niż szybka przegrana**.
 
 Dlatego w niniejszej implementacji, zgodnie z tym co zapisano w podrozdziale `4.1.1`, do oceny węzłów dodano również głębokość, czyli liczbę ruchów potrzebnych do osiągnięcia danego stanu. Przy zastosowaniu takiego podejścia analizowane wcześniej drzewo gry i przypisane wagi prezentują się następująco:
-![tictactoe](readme_images/tictactoe_depth.png)
+<img src="readme_images/tictactoe_depth.png"  style="width:100%; height:auto;">
+
 Jak widać, drzewo faworyzuje szybkie zwycięstwa: wygrana w jednym ruchu otrzymuje wartość `+9`, natomiast w trzech ruchach `+7`, co pokazuje **preferencję szybszych wygranych**.
 
 #### 4.2.2 Inne
